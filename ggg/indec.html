@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio — Victoria Kostyukova</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111111;
+            color: #f2f2f2;
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND ===== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(120, 20, 38, 0.22),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(100, 20, 35, 0.18),
+                    transparent 30%
+                );
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: .05;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        /* ===== VARIABLES ===== */
+
+        :root {
+            --black: #101010;
+            --dark: #171717;
+            --gray: #d0d0d0;
+            --light: #eeeeee;
+            --white: #ffffff;
+            --cherry: #7d172c;
+            --cherry-light: #a92c45;
+            --border: rgba(255,255,255,.15);
+        }
+
+        /* ===== GENERAL ===== */
+
+        .container {
+            width: min(1400px, 92%);
+            margin: auto;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .accent {
+            color: var(--cherry-light);
+        }
+
+        /* ===== HEADER ===== */
+
+        header {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .nav {
+            width: min(1400px, 92%);
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 28px 0;
+        }
+
+        .logo {
+            font-family: "Montserrat", sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: var(--cherry-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            left: 0;
+            bottom: -6px;
+            background: var(--cherry-light);
+            transition: .3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "PORTFOLIO";
+            position: absolute;
+            top: 12%;
+            left: 4%;
+
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(70px, 15vw, 230px);
+            font-weight: 900;
+            letter-spacing: -10px;
+
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.08);
+
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 60px;
+            align-items: center;
+
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            padding-top: 60px;
+        }
+
+        .small-title {
+            color: #aaa;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(55px, 9vw, 135px);
+            line-height: .85;
+            text-transform: uppercase;
+            letter-spacing: -6px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px #eee;
+        }
+
+        .hero-description {
+            max-width: 500px;
+            margin-top: 40px;
+
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            margin-top: 35px;
+            padding: 16px 30px;
+
+            background: var(--cherry);
+            border: 1px solid var(--cherry-light);
+
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            transition: .3s;
+        }
+
+        .hero-button:hover {
+            background: transparent;
+            transform: translateY(-4px);
+        }
+
+        /* HERO IMAGE */
+
+        .hero-image {
+            height: 620px;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            right: 0;
+            top: 5%;
+
+            background: var(--cherry);
+            z-index: -1;
+        }
+
+        .hero-image img {
+            width: 80%;
+            height: 90%;
+            object-fit: cover;
+            display: block;
+
+            margin-left: auto;
+
+            filter: grayscale(100%);
+            transition: .5s;
+        }
+
+        .hero-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .hero-number {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+
+            font-size: 100px;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.2);
+        }
+
+        /* ===== SECTION TITLE ===== */
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(40px, 7vw, 90px);
+            line-height: .9;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            color: #888;
+            max-width: 300px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ===== ABOUT ===== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .about-card {
+            background: #dedede;
+            color: #111;
+            padding: 50px;
+            min-height: 350px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card.dark {
+            background: #1b1b1b;
+            color: white;
+            border: 1px solid var(--border);
+        }
+
+        .about-card h3 {
+            font-family: "Montserrat", sans-serif;
+            font-size: 45px;
+            text-transform: uppercase;
+            line-height: .9;
+        }
+
+        .about-card p {
+            max-width: 500px;
+            margin-top: 35px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .about-card.dark p {
+            color: #999;
+        }
+
+        .about-number {
+            position: absolute;
+            right: -20px;
+            bottom: -50px;
+
+            font-size: 180px;
+            font-weight: 900;
+
+            color: rgba(125,23,44,.15);
+        }
+
+        /* ===== SKILLS ===== */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .skill {
+            min-height: 180px;
+            padding: 25px;
+
+            background: #1b1b1b;
+            border: 1px solid var(--border);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition: .3s;
+        }
+
+        .skill:hover {
+            background: var(--cherry);
+            transform: translateY(-7px);
+        }
+
+        .skill-number {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .skill h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        /* ===== CASES ===== */
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .case {
+            position: relative;
+            min-height: 450px;
+
+            background: #222;
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+        }
+
+        .case:nth-child(2) {
+            margin-top: 80px;
+        }
+
+        .case-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+
+            background-size: cover;
+            background-position: center;
+
+            filter: grayscale(100%);
+            transition: .6s;
+        }
+
+        .case:hover .case-image {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .case-overlay {
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                transparent 30%,
+                rgba(0,0,0,.9)
+            );
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 35px;
+        }
+
+        .case-category {
+            color: #aaa;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .case h3 {
+            font-family: "Montserrat", sans-serif;
+            font-size: 45px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .case-link {
+            margin-top: 20px;
+            color: white;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .case-link span {
+            color: var(--cherry-light);
+        }
+
+        /* ===== SERVICES ===== */
+
+        .services {
+            border-top: 1px solid var(--border);
+        }
+
+        .service {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+
+            transition: .3s;
+        }
+
+        .service:hover {
+            padding-left: 20px;
+            background: rgba(125,23,44,.12);
+        }
+
+        .service-number {
+            color: var(--cherry-light);
+        }
+
+        .service h3 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(25px, 4vw, 55px);
+            text-transform: uppercase;
+        }
+
+        .service-arrow {
+            font-size: 30px;
+            text-align: right;
+        }
+
+        /* ===== CONTACT ===== */
+
+        .contact {
+            background: #dedede;
+            color: #111;
+            padding: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: "LET'S TALK";
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+
+            font-size: 130px;
+            font-weight: 900;
+
+            color: rgba(125,23,44,.1);
+        }
+
+        .contact h2 {
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(50px, 9vw, 120px);
+            line-height: .8;
+            text-transform: uppercase;
+            max-width: 900px;
+        }
+
+        .contact h2 span {
+            color: var(--cherry);
+        }
+
+        .contact-info {
+            margin-top: 50px;
+
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item span {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-item a {
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            padding: 30px 0;
+            color: #777;
+
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 12px;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                height: 450px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case:nth-child(2) {
+                margin-top: 0;
+            }
+
+            .contact {
+                padding: 40px 25px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            section {
+                padding: 50px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero-image {
+                height: 380px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .case {
+                min-height: 350px;
+            }
+
+            .service {
+                grid-template-columns: 50px 1fr 40px;
+            }
+
+            .about-card {
+                padding: 30px;
+            }
+
+            .contact h2 {
+                font-size: 55px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="nav">
+        <div class="logo">
+            VK<span>.</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#cases">Cases</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="container hero-grid">
+
+            <div class="hero-text">
+
+                <div class="small-title">
+                    Designer / Developer / Student
+                </div>
+
+                <h1>
+                    Victoria
+                    <span>Kostyukova</span>
+                </h1>
+
+                <p class="hero-description">
+                    Создаю сайты, визуальные концепции и цифровые продукты,
+                    объединяя дизайн, технологии и минималистичную эстетику.
+                </p>
+
+                <a href="#cases" class="hero-button">
+                    Смотреть проекты →
+                </a>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <!-- Замени ссылку на свою фотографию -->
+                  
+                <img src="photo/1.jpg" alt="Portfolio photo">
+            
+
+                <div class="hero-number">
+                    01
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-header">
+                <h2>About<br><span class="accent">me</span></h2>
+
+                <p>
+                    Немного обо мне и моём подходе
+                    к созданию цифровых проектов.
+                </p>
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-card">
+
+                    <h3>
+                        Designer
+                    </h3>
+
+                    <p>
+                        Работаю с визуальным дизайном, веб-дизайном,
+                        презентациями и графикой. Люблю минимализм,
+                        контрастную типографику и нестандартные композиции.
+                    </p>
+
+                    <div class="about-number">
+                        01
+                    </div>
+
+                </div>
+
+
+                <div class="about-card dark">
+
+                    <h3>
+                        Developer
+                    </h3>
+
+                    <p>
+                        Создаю сайты и интерфейсы, работаю с HTML,
+                        CSS, JavaScript, Python, Java, C++ и 1С.
+                        Интересуюсь современными web-технологиями.
+                    </p>
+
+                    <div class="about-number">
+                        02
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2>What<br><span class="accent">I do</span></h2>
+
+                <p>
+                    Основные направления моей работы
+                </p>
+
+            </div>
+
+
+            <div class="skills">
+
+                <div class="skill">
+                    <span class="skill-number">01</span>
+                    <h3>Web Design</h3>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-number">02</span>
+                    <h3>UI / UX</h3>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-number">03</span>
+                    <h3>Graphic</h3>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-number">04</span>
+                    <h3>Development</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CASES -->
+
+    <section id="cases">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2>The<br><span class="accent">cases</span></h2>
+
+                <p>
+                    Избранные проекты и работы
+                </p>
+
+            </div>
+
+
+            <div class="cases-grid">
+
+                <!-- CASE 1 -->
+
+                <article class="case">
+
+                    <div
+                        class="case-image"
+                        style="
+                        background-image:
+                        url('https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80');
+                        "
+                    ></div>
+
+                    <div class="case-overlay">
+
+                        <span class="case-category">
+                            01 / Website
+                        </span>
+
+                        <h3>
+                            Website
+                        </h3>
+
+                        <a href="#" class="case-link">
+                            View project <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CASE 2 -->
+
+                <article class="case">
+
+                    <div
+                        class="case-image"
+                        style="
+                        background-image:
+                        url('https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80');
+                        "
+                    ></div>
+
+                    <div class="case-overlay">
+
+                        <span class="case-category">
+                            02 / Branding
+                        </span>
+
+                        <h3>
+                            Stories
+                        </h3>
+
+                        <a href="#" class="case-link">
+                            View project <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CASE 3 -->
+
+                <article class="case">
+
+                    <div
+                        class="case-image"
+                        style="
+                        background-image:
+                        url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80');
+                        "
+                    ></div>
+
+                    <div class="case-overlay">
+
+                        <span class="case-category">
+                            03 / Graphic
+                        </span>
+
+                        <h3>
+                            Graphic
+                        </h3>
+
+                        <a href="#" class="case-link">
+                            View project <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CASE 4 -->
+
+                <article class="case">
+
+                    <div
+                        class="case-image"
+                        style="
+                        background-image:
+                        url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=80');
+                        "
+                    ></div>
+
+                    <div class="case-overlay">
+
+                        <span class="case-category">
+                            04 / UI Design
+                        </span>
+
+                        <h3>
+                            Interface
+                        </h3>
+
+                        <a href="#" class="case-link">
+                            View project <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="section-header">
+                <h2>My<br><span class="accent">services</span></h2>
+
+                <p>
+                    Чем могу быть полезна вашему проекту
+                </p>
+            </div>
+
+
+            <div class="services">
+
+                <div class="service">
+                    <span class="service-number">01</span>
+                    <h3>Web Design</h3>
+                    <span class="service-arrow">↗</span>
+                </div>
+
+                <div class="service">
+                    <span class="service-number">02</span>
+                    <h3>UI / UX Design</h3>
+                    <span class="service-arrow">↗</span>
+                </div>
+
+                <div class="service">
+                    <span class="service-number">03</span>
+                    <h3>Graphic Design</h3>
+                    <span class="service-arrow">↗</span>
+                </div>
+
+                <div class="service">
+                    <span class="service-number">04</span>
+                    <h3>Frontend</h3>
+                    <span class="service-arrow">↗</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact">
+
+                <h2>
+                    Let's create
+                    <span>something</span>
+                    together.
+                </h2>
+
+
+                <div class="contact-info">
+
+                    <div class="contact-item">
+                        <span>Email</span>
+                        <a href="mailto:hello@example.com">
+                            vkostyukova@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Telegram</span>
+                        <a href="#">
+                            @kkvsfq
+                        </a>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Location</span>
+                        <a href="#">
+                            Moscow / Remote
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="container">
+
+    <span>
+        © 2026 Victoria Kostyukova
+    </span>
+
+    <span>
+        Design × Development
+    </span>
+
+</footer>
+
+
+</body>
+</html>
